@@ -1,0 +1,44 @@
+
+@mixin skew($arg, $y: 0, $x: 0) {
+  @if $arg == 'left' {
+    transform: skewY(-2deg) translateY(-2rem);
+    > * {
+      transform: skewY(2deg);
+    }
+  }
+  @if $arg == 'right' {
+    transform: skewY(2deg) translateY(3rem);
+    > * {
+      transform: skewY(-2deg);
+    }
+  }
+  @if $arg == 'free' {
+    ransform: skewY($y) translateY($x);
+  }
+}
+
+/*
+    Full screen sections
+*/
+%full {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@mixin full($arg: fixed) {
+  @if $arg == 'absolute' {
+    @extend %full;
+    position: absolute;
+  } @else {
+    @extend %full;
+    position: fixed;
+  }
+}
+
+%text-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
